@@ -1,6 +1,7 @@
 #include <stdio.h>
 /**
-all the contents are stored in the main functions
+ * main - A program that prints a line with puts function
+ * return: 0 (Success)
 */
 int main(void)
 {
