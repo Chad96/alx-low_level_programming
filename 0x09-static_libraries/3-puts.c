@@ -1,13 +1,28 @@
 #include "main.h"
-void _puts(char *str)
-#include<stdio.h>
+#include <stdio.h>
 /**
- * main - Entry point
+ *_puts - Prints a string to the standard output.
+ *@str: The string to be printed.
  *
- * Return: Always 0 (Success)
+ *Description: This function prints the string `str` to the standard output
+ *using the write system call.
+ */
+void _puts(char *str)
+{
+    /* Function code goes here */
+}
+
+/**
+ *main - Entry point
+ *
+ *Description: This is the entry point of the program.
+ *It prints a message to the standard output and returns 0.
+ *
+ *Return: Always 0 (Success)
  */
 int main(void)
 {
 	puts("\"Programming is like building a multilingual puzzle");
 	return (0);
 }
+
