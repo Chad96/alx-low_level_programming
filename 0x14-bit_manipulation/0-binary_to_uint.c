@@ -8,20 +8,11 @@
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {
-    unsigned long int mask;
+	unsigned long int mask;
 
-    if (index >= 64)  // Assuming a 64-bit system
-        return -1;
-
-    mask = 1UL << index;
-    *n = *n | mask;
-
-    return 1;
+	if (index >= 64)
+		return (-1);
+	mask = 1UL << index;
+	*n = *n | mask;
+	return (1);
 }
-By moving the variable declaration of mask to the beginning of the function, you resolve the "ISO C90 forbids mixed declarations and code" error. This code should compile without errors.
-
-
-
-
-
-
