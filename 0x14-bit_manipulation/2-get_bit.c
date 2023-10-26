@@ -1,5 +1,4 @@
 #include "main.h"
-#include"main.h"
 
 /**
  * get_bit - prog returns the value of a bit at a given index.
