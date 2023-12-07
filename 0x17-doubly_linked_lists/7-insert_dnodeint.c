@@ -1,52 +1,51 @@
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * insert_dnodeint_at_index - inserts a new node at a given position
- * @h: double pointer to the head of the doubly linked list
- * @idx: index of the list where the new node should be added (starting from 0)
- * @n: integer value to be stored in the new node
- *
- * Return: address of the new node, or NULL if it failed
+ * insert_dnodeint_at_index - inserts node at index
+ * @h: head of node
+ * @idx: index to insert node
+ * @n: data for new node
+ * Return: list with inserted node
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new_node, *current;
+	dlistint_t *newnode, *temp;
 	unsigned int i;
 
-	if (!h)
+	if (h == NULL)
+	{
 		return (NULL);
-	current = *h;
-
-	for (i = 0; i < idx && current; i++)
-		current = current->next;
-
-	if (i < idx)
+	}
+	newnode = malloc(sizeof(dlistint_t));
+	if (newnode == NULL)
 		return (NULL);
-
-	new_node = malloc(sizeof(dlistint_t));
-
-	if (!new_node)
-		return (NULL);
-	new_node->n = n;
-
+	temp = *h;
+	newnode->n = n;
+	newnode->next = NULL;
+	newnode->prev = NULL;
 	if (idx == 0)
 	{
-		new_node->next = *h;
-		new_node->prev = NULL;
-
-		if (*h)
-			(*h)->prev = new_node;
-		*h = new_node;
+		if (*h == NULL)
+			(*h) = newnode;
+		else
+		{
+			newnode->next = *h;
+			temp->prev = newnode;
+			*h = newnode;
+		}
+		return (newnode);
 	}
-	else
+	for (i = 0; i < (idx - 1); i++)
 	{
-		new_node->next = current;
-		new_node->prev = current->prev;
-
-		if (current->prev)
-			current->prev->next = new_node;
-		current->prev = new_node;
+		temp = temp->next;
+		if (temp == NULL)
+			return (NULL);
 	}
-	return (new_node);
+	newnode->n = n;
+	newnode->next = temp->next;
+	newnode->prev = temp;
+	if (temp->next != NULL)
+		temp->next->prev = newnode;
+	temp->next = newnode;
+	return (newnode);
 }
