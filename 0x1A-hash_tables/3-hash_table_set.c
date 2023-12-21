@@ -2,9 +2,9 @@
 
 /**
  * hash_table_set - Add or update an element in a hash table.
- * @ht: A pointer to the hash table.
+ * @ht: A pointer.
  * @key: The key to add - cannot be an empty string.
- * @value: The value associated with key.
+ * @value: value/key.
  *
  * Return: Upon failure - 0.
  *         Otherwise - 1.
